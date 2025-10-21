@@ -229,7 +229,7 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         // TODO add your handling code here:
-        System.exit(0));
+        System.exit(0);
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void txtAngka1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngka1ActionPerformed
