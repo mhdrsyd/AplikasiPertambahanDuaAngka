@@ -138,6 +138,7 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
             }
         });
 
+        txtHasil.setEditable(false);
         txtHasil.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtHasil.setToolTipText("");
         txtHasil.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -210,6 +211,30 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
+            String input1 = txtAngka1.getText().trim();
+    String input2 = txtAngka2.getText().trim();
+
+    // Cek apakah input kosong
+    if (input1.isEmpty() && input2.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Kedua kolom angka masih kosong!\nSilakan isi terlebih dahulu.",
+            "Peringatan", JOptionPane.WARNING_MESSAGE);
+        txtAngka1.requestFocus();
+        return;
+    } else if (input1.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Kolom 'Angka Pertama' belum diisi!", 
+            "Peringatan", JOptionPane.WARNING_MESSAGE);
+        txtAngka1.requestFocus();
+        return;
+    } else if (input2.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Kolom 'Angka Kedua' belum diisi!", 
+            "Peringatan", JOptionPane.WARNING_MESSAGE);
+        txtAngka2.requestFocus();
+        return;
+    }
+    
             try {
                 double a = Double.parseDouble(txtAngka1.getText());
                 double b = Double.parseDouble(txtAngka2.getText());
@@ -238,11 +263,32 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
 
     private void txtAngka1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAngka1KeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c) && c != java.awt.event.KeyEvent.VK_BACK_SPACE && c != java.awt.event.KeyEvent.VK_DELETE) {
-            evt.consume(); // Batalkan input jika bukan angka
-                    JOptionPane.showMessageDialog(this, "Hanya boleh angka!", "Peringatan", JOptionPane.WARNING_MESSAGE);
-        }
+    char c = evt.getKeyChar();
+    String text = txtAngka1.getText();
+
+    // Izinkan tombol backspace dan delete
+    if (c == java.awt.event.KeyEvent.VK_BACK_SPACE || c == java.awt.event.KeyEvent.VK_DELETE) {
+        return;
+    }
+
+    // Hanya boleh angka, titik, atau minus di awal
+    if (!Character.isDigit(c) && c != '-' && c != '.') {
+        evt.consume();
+//        JOptionPane.showMessageDialog(this, "Hanya boleh angka, tanda '-' di awal, dan satu titik desimal!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Jika '-' bukan di posisi pertama, tolak
+    if (c == '-' && (text.length() > 0 || text.contains("-"))) {
+        evt.consume();
+        return;
+    }
+
+    // Jika '.' sudah ada, tolak titik kedua
+    if (c == '.' && text.contains(".")) {
+        evt.consume();
+        return;
+    }
     }//GEN-LAST:event_txtAngka1KeyTyped
 
     private void txtAngka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngka2ActionPerformed
@@ -251,11 +297,28 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
 
     private void txtAngka2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAngka2KeyTyped
         // TODO add your handling code here:
-                char c = evt.getKeyChar();
-        if (!Character.isDigit(c) && c != java.awt.event.KeyEvent.VK_BACK_SPACE && c != java.awt.event.KeyEvent.VK_DELETE) {
-            evt.consume(); // Batalkan input jika bukan angka
-                    JOptionPane.showMessageDialog(this, "Hanya boleh angka!", "Peringatan", JOptionPane.WARNING_MESSAGE);
-        }
+char c = evt.getKeyChar();
+    String text = txtAngka2.getText();
+
+    if (c == java.awt.event.KeyEvent.VK_BACK_SPACE || c == java.awt.event.KeyEvent.VK_DELETE) {
+        return;
+    }
+
+    if (!Character.isDigit(c) && c != '-' && c != '.') {
+        evt.consume();
+//        JOptionPane.showMessageDialog(this, "Hanya boleh angka, tanda '-' di awal, dan satu titik desimal!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    if (c == '-' && (text.length() > 0 || text.contains("-"))) {
+        evt.consume();
+        return;
+    }
+
+    if (c == '.' && text.contains(".")) {
+        evt.consume();
+        return;
+    }
     }//GEN-LAST:event_txtAngka2KeyTyped
 
     private void txtAngka1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAngka1FocusGained
