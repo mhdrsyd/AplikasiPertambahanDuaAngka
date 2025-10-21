@@ -221,17 +221,15 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-        btnHapus.addActionListener(e -> {
             txtAngka1.setText("");
             txtAngka2.setText("");
             txtHasil.setText("");
             txtAngka1.requestFocus();
-        });
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         // TODO add your handling code here:
-        btnKeluar.addActionListener(e -> System.exit(0));
+        System.exit(0));
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void txtAngka1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngka1ActionPerformed
