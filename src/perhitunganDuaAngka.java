@@ -210,7 +210,6 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
-        btnTambah.addActionListener(e -> {
             try {
                 double a = Double.parseDouble(txtAngka1.getText());
                 double b = Double.parseDouble(txtAngka2.getText());
@@ -218,7 +217,6 @@ public class perhitunganDuaAngka extends javax.swing.JFrame {
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Masukkan hanya angka!", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        });
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
